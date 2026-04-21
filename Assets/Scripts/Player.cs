@@ -1,5 +1,6 @@
+using System;
 using UnityEngine;
-
+[SelectionBase]
 public class Player : MonoBehaviour {
     public static Player Instance { get; private set; }
 
@@ -13,6 +14,16 @@ public class Player : MonoBehaviour {
     private void Awake() {
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
+    }
+
+    private void GameInput_OnPlayerAttack(object sender, EventArgs e)
+    {
+        ActiveWeapon.Instance.GetActiveWeapon().Attack();
     }
 
     private void FixedUpdate() {
