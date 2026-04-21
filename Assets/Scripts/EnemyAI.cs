@@ -20,12 +20,13 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Transform targetPoint;
     private Transform player;
-
+    private EnemyEntity enemy;
     private State state;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        enemy = GetComponent<EnemyEntity>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
 
@@ -34,7 +35,6 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        // точка назначения
         GameObject target = GameObject.FindGameObjectWithTag(targetTag);
         if (target != null)
             targetPoint = target.transform;
@@ -50,7 +50,11 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        //if (player == null || targetPoint == null) return;
+        if (enemy._isDead)
+        {
+            StopEverything();
+            return;
+        }
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -98,5 +102,10 @@ public class EnemyAI : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, -180, 0);
         else
             transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+    private void StopEverything()
+    {
+        navMeshAgent.isStopped = true;
+        navMeshAgent.ResetPath();
     }
 }

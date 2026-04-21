@@ -1,21 +1,32 @@
 using UnityEngine;
 
-public class EnemyEntity : MonoBehaviour {
-    [SerializeField] private int _maxHealth;
-    private int _currentHealth;
+public class EnemyEntity : MonoBehaviour
+{
+    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private int _xpReward = 50;
 
-    private void Start() {
+    private int _currentHealth;
+    public bool _isDead;
+
+    public int XPReward => _xpReward;
+
+    public event System.Action OnDied;
+
+    private void Start()
+    {
         _currentHealth = _maxHealth;
     }
 
-    public void TakeDamage(int damage) {
-        _currentHealth -= damage;
-        DetectDeath();
-    }
+    public void TakeDamage(int damage)
+    {
+        if (_isDead) return;
 
-    public void DetectDeath() {
-        if (_currentHealth <= 0) {
-            Destroy(gameObject);
+        _currentHealth -= damage;
+
+        if (_currentHealth <= 0)
+        {
+            _isDead = true;
+            OnDied?.Invoke();
         }
     }
 }

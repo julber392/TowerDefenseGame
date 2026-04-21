@@ -14,8 +14,16 @@ public class PlayerVisual : MonoBehaviour {
 
     private void Update() {
         animator.SetBool(IS_RUNNING, Player.Instance.IsRunning());
-        sword.OnSwordAttacked += Sword_AttackAnimate;
         Flip();
+    }
+    private void OnEnable()
+    {
+        sword.OnSwordAttacked += Sword_AttackAnimate;
+    }
+
+    private void OnDisable()
+    {
+        sword.OnSwordAttacked -= Sword_AttackAnimate;
     }
 
     private void Sword_AttackAnimate(object sender, EventArgs e)

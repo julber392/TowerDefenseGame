@@ -59,8 +59,7 @@ public class BeamAttack : MonoBehaviour
 
     private IEnumerator ShowLaser(Vector3 target)
     {
-        if (lineRenderer == null) yield break;
-
+        
         lineRenderer.enabled = true;
 
         lineRenderer.SetPosition(0, transform.position);
