@@ -18,22 +18,21 @@ public class EnemyVisual : MonoBehaviour
     private void OnEnable()
     {
         enemy.OnDied += HandleDeath;
+        
     }
 
     private void OnDisable()
     {
         enemy.OnDied -= HandleDeath;
+       
     }
+    
 
-    private void Update()
+    public void PlayAttack()
     {
-        animator.SetBool(IS_ATTACK, false);
+        animator.SetTrigger(IS_ATTACK);
     }
-
-    public void SetAttackState(bool isAttacking)
-    {
-        animator.SetBool(IS_ATTACK, isAttacking);
-    }
+    
 
     private void HandleDeath()
     {
@@ -50,4 +49,5 @@ public class EnemyVisual : MonoBehaviour
 
         Destroy(gameObject);
     }
+   
 }

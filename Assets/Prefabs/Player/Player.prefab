@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1782288996603514508}
   - component: {fileID: 7591716686224803649}
   - component: {fileID: 4055217804079314050}
+  - component: {fileID: 8940232940521006250}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -45,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc6326c4cc3364a2886fb0dbbf032f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sword
-  _damage: 0
+  damageDealer: {fileID: 8940232940521006250}
   _attackDuration: 0.8
 --- !u!60 &4055217804079314050
 PolygonCollider2D:
@@ -99,6 +100,19 @@ PolygonCollider2D:
       - {x: 0.31541398, y: -0.48216003}
       - {x: 0.88582563, y: 0.28816205}
   m_UseDelaunayMesh: 1
+--- !u!114 &8940232940521006250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603154954867608954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c936946e285d64bb5ade631efdccfd79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
+  damage: 10
 --- !u!1 &1310744579435371350
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -278,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.3529412, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -375,7 +389,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -572,6 +586,7 @@ GameObject:
   - component: {fileID: 5422464235813178307}
   - component: {fileID: 663305778526670313}
   - component: {fileID: 9163961871192278527}
+  - component: {fileID: 1629155488964881832}
   m_Layer: 5
   m_Name: PlayerHPBar
   m_TagString: Untagged
@@ -598,8 +613,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: 0, y: 78}
+  m_SizeDelta: {x: 100, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &663305778526670313
 MonoBehaviour:
@@ -648,7 +663,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.67
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -666,6 +681,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHpBar
   playerHP: {fileID: 2055997132747679778}
   slider: {fileID: 663305778526670313}
+  smoothSpeed: 10
+--- !u!114 &1629155488964881832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6965917299222454641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0d3d8dcc4d04f609e99ff2bb15cf04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HPBarScreenFollow
+  target: {fileID: 8974468493260056469}
+  offset: {x: 0, y: 0.75, z: 0}
 --- !u!1 &8173356439566415843
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +726,7 @@ Transform:
   m_GameObject: {fileID: 8173356439566415843}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.47308, y: -3.03, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Sword : MonoBehaviour
 {
-    [SerializeField] private int _damage = 1;
+    [SerializeField] private DamageDealer damageDealer;
     [SerializeField] private float _attackDuration = 0.8f;
     
     public event EventHandler OnSwordAttacked;
@@ -35,10 +35,7 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.TryGetComponent(out EnemyEntity enemyEntity))
-        {
-            enemyEntity.TakeDamage(_damage);
-        }
+        damageDealer.DealDamage(collision.gameObject);
     }
 
     private void AttackColliderOn()

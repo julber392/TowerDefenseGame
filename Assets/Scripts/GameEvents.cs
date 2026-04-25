@@ -5,4 +5,6 @@ public static class GameEvents
     // событие: враг умер и дал XP
     public static Action<int> OnEnemyKilled;
     
+    public static System.Action OnLevelUp;
+    
 }

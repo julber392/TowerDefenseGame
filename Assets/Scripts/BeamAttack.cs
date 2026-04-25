@@ -6,9 +6,7 @@ public class BeamAttack : MonoBehaviour
 {
     [Header("Attack")]
     [SerializeField] private float range = 5f;
-    [SerializeField] private int damage = 10;
-    [SerializeField] private float attackCooldown = 1f;
-
+    [SerializeField] private TowerData data;
     [Header("Laser")]
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private float laserDuration = 0.1f;
@@ -31,12 +29,14 @@ public class BeamAttack : MonoBehaviour
         if (timer <= 0f)
         {
             Attack();
-            timer = attackCooldown;
+            timer = data.attackSpeed;
         }
     }
 
     private void Attack()
     {
+        if (data == null) return;
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, range, enemyLayer);
 
         if (hits.Length == 0) return;
@@ -51,10 +51,13 @@ public class BeamAttack : MonoBehaviour
                 break;
             }
         }
-        
-        target.TakeDamage(damage);
 
-        StartCoroutine(ShowLaser(target.transform.position));
+        if (target == null) return;
+
+        target.TakeDamage((int)data.damage);
+
+        if (lineRenderer != null)
+            StartCoroutine(ShowLaser(target.transform.position));
     }
 
     private IEnumerator ShowLaser(Vector3 target)
@@ -68,5 +71,9 @@ public class BeamAttack : MonoBehaviour
         yield return new WaitForSeconds(laserDuration);
 
         lineRenderer.enabled = false;
+    }
+    public void SetData(TowerData towerData)
+    {
+        data = towerData;
     }
 }

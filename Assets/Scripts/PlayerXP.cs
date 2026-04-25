@@ -42,8 +42,9 @@ public class PlayerXP : MonoBehaviour
         level++;
         currentXP -= xpToNextLevel;
         xpToNextLevel *= xpMultiplier;
-
+        GameEvents.OnLevelUp?.Invoke();
         Debug.Log("LEVEL UP! Уровень: " + level);
+        
     }
 
     private void UpdateUI()

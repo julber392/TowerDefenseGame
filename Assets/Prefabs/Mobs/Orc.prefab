@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5782694699223744839}
   - component: {fileID: 261397962671525727}
   - component: {fileID: 3376036309575606934}
+  - component: {fileID: 6944383782601967011}
   m_Layer: 0
   m_Name: OrcVisual
   m_TagString: Untagged
@@ -114,6 +115,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6944383782601967011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714039941058234974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0331b437674b42578f73d2c49534b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyVisual
 --- !u!1 &7198833039047231255
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +266,10 @@ MonoBehaviour:
   playerTag: Player
   aggroRange: 1.5
   stopAggroRange: 2
+  attackDuration: 0.8
+  attackRange: 0.5
+  lastAttackTime: 0
+  attackCooldown: 0.5
 --- !u!114 &6989460707418576443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,3 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyEntity
   _maxHealth: 20
+  _xpReward: 50
+  _damage: 10
+  _attackRange: 1
+  _isDead: 0

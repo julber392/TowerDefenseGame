@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,7 +7,8 @@ public class EnemyAI : MonoBehaviour
     private enum State
     {
         Roaming,
-        Chase
+        Chase,
+        Attack
     }
 
     [Header("Target Point")]
@@ -16,7 +18,11 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private string playerTag = "Player";
     [SerializeField] private float aggroRange = 1.5f;
     [SerializeField] private float stopAggroRange = 2f;
-
+    [SerializeField] private float attackDuration = 0.8f;
+    [SerializeField] private float attackRange = 0.2f;
+    [SerializeField] private float lastAttackTime = 0;
+    [SerializeField] float attackCooldown = 0.5f;
+    private bool isAttacking;
     private NavMeshAgent navMeshAgent;
     private Transform targetPoint;
     private Transform player;
@@ -70,12 +76,15 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case State.Chase:
-                ChasePlayer();
+                ChasePlayer(distanceToPlayer);
 
                 if (distanceToPlayer > stopAggroRange)
                 {
                     state = State.Roaming;
                 }
+                break;
+            case State.Attack:
+                
                 break;
         }
     }
@@ -88,12 +97,24 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.SetDestination(targetPosition);
     }
 
-    private void ChasePlayer()
+    private void ChasePlayer(float distanceToPlayer)
     {
-        Vector3 playerPosition = player.position;
+        ChangeFacingDirection(transform.position, player.position);
 
-        ChangeFacingDirection(transform.position, playerPosition);
-        navMeshAgent.SetDestination(playerPosition);
+        if (!isAttacking && distanceToPlayer <= attackRange)
+        {
+            
+            if (Time.time - lastAttackTime >= attackCooldown)
+            {
+                lastAttackTime = Time.time;
+                StartAttack();
+            }
+        }
+        else if (!isAttacking)
+        {
+            navMeshAgent.isStopped = false;
+            navMeshAgent.SetDestination(player.position);
+        }
     }
 
     private void ChangeFacingDirection(Vector3 sourcePosition, Vector3 targetPosition)
@@ -107,5 +128,28 @@ public class EnemyAI : MonoBehaviour
     {
         navMeshAgent.isStopped = true;
         navMeshAgent.ResetPath();
+    }
+    private void StartAttack()
+    {
+        StartCoroutine(AttackRoutine());
+    }
+    private IEnumerator AttackRoutine()
+    {
+        isAttacking = true;
+        state = State.Attack;
+
+        navMeshAgent.isStopped = true;
+        navMeshAgent.ResetPath();
+        
+        GetComponentInChildren<EnemyVisual>().PlayAttack();
+        
+        yield return new WaitForSeconds(attackDuration * 0.6f);
+        
+        enemy.DealDamage();
+        
+        yield return new WaitForSeconds(attackDuration * 0.6f);
+
+        isAttacking = false;
+        state = State.Chase;
     }
 }

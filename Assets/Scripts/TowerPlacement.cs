@@ -22,15 +22,15 @@ public class TowerPlacement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            worldPos.z = 0;
-
-            Vector2Int gridPos = WorldToGrid(worldPos);
-
-            TryPlaceTower(gridPos.x, gridPos.y);
-        }
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //     worldPos.z = 0;
+        //
+        //     Vector2Int gridPos = WorldToGrid(worldPos);
+        //
+        //     TryPlaceTower(gridPos.x, gridPos.y);
+        // }
     }
     
     Vector2Int WorldToGrid(Vector3 worldPos)
@@ -111,5 +111,37 @@ public class TowerPlacement : MonoBehaviour
                 );
             }
         }
+    }
+    public bool TryPlaceFromWorld(Vector3 worldPos, TowerData towerData)
+    {
+        Vector2Int gridPos = WorldToGrid(worldPos);
+
+        if (!CanPlace(gridPos.x, gridPos.y))
+            return false;
+
+        for (int i = 0; i < 2; i++)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                grid[gridPos.x + i, gridPos.y + j] = true;
+            }
+        }
+
+        Vector3 origin = gridManager.position;
+
+        Vector3 spawnPos = new Vector3(
+            origin.x + (gridPos.x + 1) * cellSize,
+            origin.y + (gridPos.y + 1) * cellSize,
+            0
+        );
+
+        GameObject towerGO = Instantiate(towerData.prefab, spawnPos, Quaternion.identity);
+        
+        BeamAttack attack = towerGO.GetComponent<BeamAttack>();
+        if (attack != null)
+        {
+            attack.SetData(towerData);
+        }
+        return true;
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6474838156202343882}
   - component: {fileID: 2145100613828192713}
   - component: {fileID: 816801581641590579}
+  - component: {fileID: 2488726655948091088}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -170,8 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeamAttack
   range: 6
-  damage: 1
-  attackCooldown: 2
+  data: {fileID: 0}
   lineRenderer: {fileID: 816801581641590579}
   laserDuration: 1
   enemyLayer:
@@ -287,3 +287,18 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &2488726655948091088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264915287370844394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99056e35f842f41a1b7ec5ac941fa9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerDragItem
+  icon: {fileID: 0}
+  towerData: {fileID: 0}
+  canvas: {fileID: 0}

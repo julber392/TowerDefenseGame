@@ -1,10 +1,13 @@
 using UnityEngine;
 
-public class EnemyEntity : MonoBehaviour
+public class EnemyEntity : MonoBehaviour, IDamageable
 {
     [SerializeField] private int _maxHealth = 100;
     [SerializeField] private int _xpReward = 50;
-
+    [SerializeField] private int _damage = 10;
+    [SerializeField] private float _attackRange = 1.0f;
+    public event System.Action OnAttack;
+    private Transform _player;
     private int _currentHealth;
     public bool _isDead;
 
@@ -14,6 +17,7 @@ public class EnemyEntity : MonoBehaviour
 
     private void Start()
     {
+        _player = Player.Instance.transform;
         _currentHealth = _maxHealth;
     }
 
@@ -28,5 +32,17 @@ public class EnemyEntity : MonoBehaviour
             _isDead = true;
             OnDied?.Invoke();
         }
+    }
+    public void DealDamage()
+    {
+        if (_isDead) return;
+
+            if (_player.TryGetComponent(out PlayerHp playerHp))
+            {
+                OnAttack?.Invoke();
+                playerHp.TakeDamage(_damage);
+                Debug.Log("Enemy dealt damage");
+            }
+        
     }
 }
