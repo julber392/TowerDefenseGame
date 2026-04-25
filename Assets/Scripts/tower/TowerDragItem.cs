@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,14 +7,20 @@ public class TowerDragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     [SerializeField] private Image icon;
     [SerializeField] private TowerData towerData;
-    [SerializeField] private Canvas canvas;
+    private Canvas canvas;
 
     private GameObject dragGhost;
     private TowerPlacement placement;
 
+    private void Awake()
+    {
+        canvas = GameObject.FindGameObjectWithTag("TowerUI").GetComponent<Canvas>();
+    }
+
     private void Start()
     {
         placement = FindObjectOfType<TowerPlacement>();
+        
     }
 
     public void Init(TowerData data)
