@@ -9,12 +9,21 @@ public class UpgradeUI : MonoBehaviour
 
     [SerializeField] private TowerManager towerManager;
 
-    private void OnEnable()
+    // private void OnEnable()
+    // {
+    //     GameEvents.OnLevelUp += Show;
+    // }
+    //
+    // private void OnDisable()
+    // {
+    //     GameEvents.OnLevelUp -= Show;
+    // }
+    private void Start()
     {
         GameEvents.OnLevelUp += Show;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         GameEvents.OnLevelUp -= Show;
     }
