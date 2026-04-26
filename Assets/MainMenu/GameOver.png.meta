@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f77c4f4df059640c0a874e48c93c655d
+guid: 730da6cf4676c419697cca70f9abdc56
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IconButton_Large_Red_Rounded_0
+      name: GameOver_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 357
-        height: 357
+        width: 1672
+        height: 941
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02fa124883b9f4bb4a15b61c3b0bf66c
-      internalID: 1217834719
+      spriteID: 0f655a94f4c2c4a6792215390cb9412a
+      internalID: 1947146452
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 66313f8d1e7f34808845988bfe83e55e
+    spriteID: a855bb23ba9ff4b578742cbff567bf39
     internalID: 0
     vertices: []
     indices: 
@@ -132,9 +132,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":357.0,"y":357.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1672.0,"y":941.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      IconButton_Large_Red_Rounded_0: 1217834719
+      GameOver_0: 1947146452
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

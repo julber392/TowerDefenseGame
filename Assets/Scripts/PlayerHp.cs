@@ -20,7 +20,7 @@ public class PlayerHp : MonoBehaviour, IDamageable
     public bool IsDead => _isDead;
 
     public event Action<int, int> OnHealthChanged;
-    public event Action OnDied;
+    public event Action OnDiedPlayer;
 
     private void Awake()
     {
@@ -83,6 +83,6 @@ public class PlayerHp : MonoBehaviour, IDamageable
         if (_isDead) return;
 
         _isDead = true;
-        OnDied?.Invoke();
+        OnDiedPlayer?.Invoke();
     }
 }
