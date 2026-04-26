@@ -8,6 +8,7 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private Transform container;
 
     [SerializeField] private TowerManager towerManager;
+    [SerializeField] private PauseManager _pauseManager;
 
     // private void OnEnable()
     // {
@@ -30,7 +31,7 @@ public class UpgradeUI : MonoBehaviour
 
     private void Show()
     {
-        Time.timeScale = 0f;
+        _pauseManager.Pause("levelup");
         panel.SetActive(true);
 
         GenerateCards();
@@ -58,7 +59,7 @@ public class UpgradeUI : MonoBehaviour
         ApplyUpgrade(tower, type);
 
         panel.SetActive(false);
-        Time.timeScale = 1f;
+        _pauseManager.Resume("levelup");
     }
 
     private void ApplyUpgrade(TowerData tower, UpgradeType type)

@@ -186,6 +186,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1912765440821437346, guid: bf7a4dc6915ee4edea59f0e1916a138f, type: 3}
   m_PrefabInstance: {fileID: 2007481512}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &30500051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30500053}
+  - component: {fileID: 30500052}
+  m_Layer: 0
+  m_Name: PauseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &30500052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30500051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f926a832608644bc2805e819d186aa51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseManager
+  _pausePanel: {fileID: 965205632}
+--- !u!4 &30500053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30500051}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.47906, y: 1.79023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &33217527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7737,6 +7782,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25eab352bf2ab4deab66e59c440c279a, type: 3}
+--- !u!1 &965205632 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8400145610993782831, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
+  m_PrefabInstance: {fileID: 4324391130399723659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &967869897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17411,6 +17461,10 @@ PrefabInstance:
       propertyPath: _playerHp
       value: 
       objectReference: {fileID: 979306143}
+    - target: {fileID: 6689768326040954605, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
+      propertyPath: _pauseManager
+      value: 
+      objectReference: {fileID: 30500052}
     - target: {fileID: 7059584152462817643, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
       propertyPath: towerManager
       value: 
@@ -17419,6 +17473,10 @@ PrefabInstance:
       propertyPath: towerManager
       value: 
       objectReference: {fileID: 1411792217}
+    - target: {fileID: 7296003325605505751, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
+      propertyPath: _pauseManager
+      value: 
+      objectReference: {fileID: 30500052}
     - target: {fileID: 7934520947206116995, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -18154,3 +18212,4 @@ SceneRoots:
   - {fileID: 818389946}
   - {fileID: 382811682}
   - {fileID: 1502263113}
+  - {fileID: 30500053}

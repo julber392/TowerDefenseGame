@@ -6,6 +6,7 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private string _menuSceneName = "Menu";
     [SerializeField] private PlayerHp _playerHp;
+    [SerializeField] private PauseManager _pauseManager;
 
     private void Awake()
     {
@@ -15,12 +16,12 @@ public class GameOverUI : MonoBehaviour
     public void ShowGameOver()
     {
         _gameOverPanel.SetActive(true);
-        Time.timeScale = 0f; 
+        _pauseManager.Pause("gameover");
     }
 
     public void BackToMenu()
     {
-        Time.timeScale = 1f; 
+        _pauseManager.Resume("gameover");
         SceneManager.LoadScene(_menuSceneName);
     }
     
