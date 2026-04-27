@@ -17453,6 +17453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4534801589757233637, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 730da6cf4676c419697cca70f9abdc56, type: 3}
     - target: {fileID: 5003115899037615347, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -17477,6 +17481,10 @@ PrefabInstance:
       propertyPath: _pauseManager
       value: 
       objectReference: {fileID: 30500052}
+    - target: {fileID: 7712848298378457716, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7934520947206116995, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
