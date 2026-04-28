@@ -1049,7 +1049,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'WASD - movement,
 
-    Right mouse button - attack
+    Left mouse button - attack
 
     ESC - pause'
   m_isRightToLeft: 0
