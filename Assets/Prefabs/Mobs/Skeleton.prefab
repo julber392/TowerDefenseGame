@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3376036309575606934}
   - component: {fileID: 6944383782601967011}
   m_Layer: 0
-  m_Name: ZombieVisual
+  m_Name: SkeletonVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -685844470, guid: 3a46f526f26b54c759c50461ffb28a9c, type: 3}
+  m_Sprite: {fileID: 806817975, guid: ac4f8809ef860419284d88e37fab40dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +103,7 @@ Animator:
   m_GameObject: {fileID: 1714039941058234974}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8bd4be3efce634c23ab8db8edd1070e7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9c72405344cfa494ab4309912e3964fc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 8402434554087670490}
   - component: {fileID: 6989460707418576443}
   m_Layer: 3
-  m_Name: Zombie
+  m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,8 +198,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.04756059, y: -0.38616672}
-  m_Size: {x: 0.6905705, y: 0.22457883}
+  m_Offset: {x: 0.030323552, y: -0.38616672}
+  m_Size: {x: 0.5182013, y: 0.22457883}
   m_Direction: 1
 --- !u!195 &1323897419667778109
 NavMeshAgent:
@@ -267,7 +267,7 @@ MonoBehaviour:
   aggroRange: 1.5
   stopAggroRange: 2
   attackDuration: 0.8
-  attackRange: 0.5
+  attackRange: 0.6
   lastAttackTime: 0
   attackCooldown: 0.5
 --- !u!114 &6989460707418576443
