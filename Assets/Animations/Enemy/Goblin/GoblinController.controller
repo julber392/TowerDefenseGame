@@ -84,7 +84,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeletonController
+  m_Name: GoblinController
   serializedVersion: 6
   m_AnimatorParameters:
   - m_Name: Death
