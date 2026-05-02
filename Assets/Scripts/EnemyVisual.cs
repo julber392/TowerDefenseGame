@@ -47,7 +47,7 @@ public class EnemyVisual : MonoBehaviour
 
         GameEvents.OnEnemyKilled?.Invoke(enemy.XPReward);
 
-        Destroy(gameObject);
+        Destroy(enemy.gameObject);
     }
    
 }

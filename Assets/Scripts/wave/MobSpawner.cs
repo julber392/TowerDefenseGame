@@ -1,25 +1,37 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WaveTimerSpawner : MonoBehaviour
 {
-    [Header("Волны")]
     public int totalWaves = 5;
     public float waveDuration = 20f;
     public float timeBetweenWaves = 5f;
 
-    [Header("Спавн")]
     public GameObject[] mobPrefabs;
     public Transform[] spawnPoints;
     public float spawnInterval = 2f;
 
-    [Header("UI")]
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI timerText;
 
     private int currentWave = 0;
     private float currentTime;
+    private Coroutine spawnCoroutine;
+
+    private int aliveEnemies = 0;
+    private bool lastWaveFinished = false;
+
+    private void OnEnable()
+    {
+        GameEvents.OnEnemyKilled += HandleEnemyKilled;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnEnemyKilled -= HandleEnemyKilled;
+    }
 
     private void Start()
     {
@@ -34,18 +46,26 @@ public class WaveTimerSpawner : MonoBehaviour
             currentTime = waveDuration;
 
             UpdateWaveUI();
-            
-            StartCoroutine(SpawnRoutine());
-            
+
+            spawnCoroutine = StartCoroutine(SpawnRoutine());
+
             while (currentTime > 0)
             {
                 currentTime -= Time.deltaTime;
                 UpdateTimerUI();
                 yield return null;
             }
-            
-            StopCoroutine(SpawnRoutine());
-            
+
+            if (spawnCoroutine != null)
+                StopCoroutine(spawnCoroutine);
+
+            if (currentWave >= totalWaves)
+            {
+                timerText.text = "All waves completed!";
+                lastWaveFinished = true;
+                yield break;
+            }
+
             float breakTime = timeBetweenWaves;
 
             while (breakTime > 0)
@@ -55,7 +75,6 @@ public class WaveTimerSpawner : MonoBehaviour
                 yield return null;
             }
         }
-        timerText.text = "All waves completed!";
     }
 
     IEnumerator SpawnRoutine()
@@ -78,17 +97,29 @@ public class WaveTimerSpawner : MonoBehaviour
             : transform;
 
         Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+
+        aliveEnemies++;
+    }
+
+    void HandleEnemyKilled(int xp)
+    {
+        aliveEnemies--;
+        if (aliveEnemies <= 0)
+            aliveEnemies = 0;
+
+        if (lastWaveFinished && aliveEnemies == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     void UpdateWaveUI()
     {
-        if (waveText != null)
-            waveText.text = "Wave: " + currentWave + " / " + totalWaves;
+        waveText.text = "Wave: " + currentWave + " / " + totalWaves;
     }
 
     void UpdateTimerUI()
     {
-        if (timerText != null)
-            timerText.text = "Time: " + Mathf.Ceil(currentTime);
+        timerText.text = "Time: " + Mathf.Ceil(currentTime);
     }
 }
