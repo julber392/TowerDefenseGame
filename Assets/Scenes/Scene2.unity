@@ -11454,7 +11454,7 @@ MonoBehaviour:
   waveDuration: 2
   timeBetweenWaves: 10
   mobPrefabs:
-  - {fileID: 7198833039047231255, guid: 6e55bbfb9643e476cb36f5c4a9ab5660, type: 3}
+  - {fileID: 7198833039047231255, guid: 2387095c443a14f8a8e14166a009112c, type: 3}
   spawnPoints:
   - {fileID: 1012881522}
   - {fileID: 1277082654}
