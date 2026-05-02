@@ -301,4 +301,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerDragItem
   icon: {fileID: 0}
   towerData: {fileID: 0}
-  canvas: {fileID: 0}
