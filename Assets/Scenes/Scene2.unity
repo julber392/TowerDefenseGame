@@ -11450,11 +11450,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b7579c88f9d42a58c5d2f787ff967f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobSpawner
-  totalWaves: 2
-  waveDuration: 2
+  totalWaves: 1
+  waveDuration: 1
   timeBetweenWaves: 10
   mobPrefabs:
-  - {fileID: 7198833039047231255, guid: 2387095c443a14f8a8e14166a009112c, type: 3}
+  - {fileID: 7198833039047231255, guid: c20626194cf214e28b0ad365d462243c, type: 3}
   spawnPoints:
   - {fileID: 1012881522}
   - {fileID: 1277082654}
