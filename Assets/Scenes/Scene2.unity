@@ -11569,6 +11569,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerManager
   towers:
   - {fileID: 11400000, guid: bb00db6de56eb4a2a98fc01dc9c781cf, type: 2}
+  - {fileID: 11400000, guid: e5437868e8647409c9a178065f955281, type: 2}
+  - {fileID: 11400000, guid: d8e782109dcc34a59b9fbc5a4881ca8b, type: 2}
 --- !u!4 &1411792218
 Transform:
   m_ObjectHideFlags: 0
