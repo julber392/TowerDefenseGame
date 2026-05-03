@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class BeamAttack : MonoBehaviour
 {
+    private Coroutine laserCoroutine;
     [Header("Attack")]
     [SerializeField] private float range = 5f;
     [SerializeField] private TowerData data;
@@ -57,16 +58,23 @@ public class BeamAttack : MonoBehaviour
         target.TakeDamage((int)data.damage);
 
         if (lineRenderer != null)
-            StartCoroutine(ShowLaser(target.transform.position));
+        {
+            if (laserCoroutine != null)
+                StopCoroutine(laserCoroutine);
+
+            laserCoroutine = StartCoroutine(ShowLaser(target.transform));
+        }
     }
 
-    private IEnumerator ShowLaser(Vector3 target)
+    private IEnumerator ShowLaser(Transform target)
     {
-        
+        Vector3 start = transform.position + new Vector3(0f, 0.7f, 0f);
+        Vector3 hitPoint = target != null ? target.position : start;
+
         lineRenderer.enabled = true;
 
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, target);
+        lineRenderer.SetPosition(0, start);
+        lineRenderer.SetPosition(1, hitPoint);
 
         yield return new WaitForSeconds(laserDuration);
 
