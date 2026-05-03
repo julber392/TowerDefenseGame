@@ -30,6 +30,8 @@ public class EnemyEntity : MonoBehaviour, IDamageable
         if (_currentHealth <= 0)
         {
             _isDead = true;
+
+            GameEvents.OnEnemyKilled?.Invoke(_xpReward); 
             OnDied?.Invoke();
         }
     }

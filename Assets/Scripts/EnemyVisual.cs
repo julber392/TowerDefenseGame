@@ -42,10 +42,7 @@ public class EnemyVisual : MonoBehaviour
     private IEnumerator DeathRoutine()
     {
         animator.SetTrigger(DEATH);
-        
         yield return new WaitForSeconds(1.2f);
-
-        GameEvents.OnEnemyKilled?.Invoke(enemy.XPReward);
 
         Destroy(enemy.gameObject);
     }

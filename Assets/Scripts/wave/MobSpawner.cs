@@ -103,12 +103,16 @@ public class WaveTimerSpawner : MonoBehaviour
 
     void HandleEnemyKilled(int xp)
     {
+        Debug.Log("Enemy killed, alive: " + aliveEnemies);
+
         aliveEnemies--;
+
         if (aliveEnemies <= 0)
             aliveEnemies = 0;
 
         if (lastWaveFinished && aliveEnemies == 0)
         {
+            Debug.Log("LOAD NEXT SCENE");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
