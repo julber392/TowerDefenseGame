@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2145100613828192713}
   - component: {fileID: 816801581641590579}
   - component: {fileID: 2488726655948091088}
+  - component: {fileID: 3532023257688460591}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -172,8 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BeamAttack
   range: 6
   data: {fileID: 0}
-  lineRenderer: {fileID: 816801581641590579}
-  laserDuration: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -301,3 +300,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerDragItem
   icon: {fileID: 0}
   towerData: {fileID: 0}
+--- !u!114 &3532023257688460591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264915287370844394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a0b43654ca743e38f94639eedcaf35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LaserVisual
+  lineRenderer: {fileID: 816801581641590579}
+  duration: 0.5
