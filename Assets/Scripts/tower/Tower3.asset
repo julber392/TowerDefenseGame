@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13c7823ec0bd410f9aa02eae3832008, type: 3}
   m_Name: Tower3
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
-  towerName: 
+  towerName: CrossbowTower
   icon: {fileID: 21300000, guid: a8fef2537b63c4b05b1ab1787197b4ba, type: 3}
   prefab: {fileID: 5264915287370844394, guid: 5cbee20a258af4e24b5d1154b4c7ebcb, type: 3}
-  damage: 10
+  damage: 15
   attackSpeed: 1
-  count: 1
+  count: 8
