@@ -33,10 +33,6 @@ public class PlayerHp : MonoBehaviour, IDamageable
         if (_isDead) return;
 
         HandleRegeneration();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(10);
-        }
     }
     
     private void HandleRegeneration()
