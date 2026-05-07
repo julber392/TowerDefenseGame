@@ -5,23 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class WaveTimerSpawner : MonoBehaviour
 {
+    [Header("Waves")]
     public int totalWaves = 5;
     public float waveDuration = 20f;
     public float timeBetweenWaves = 5f;
 
+    [Header("Enemies")]
     public GameObject[] mobPrefabs;
+    public GameObject bossPrefab;
+
     public Transform[] spawnPoints;
     public float spawnInterval = 2f;
 
+    [Header("UI")]
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI timerText;
 
     private int currentWave = 0;
     private float currentTime;
+
     private Coroutine spawnCoroutine;
 
     private int aliveEnemies = 0;
-    private bool lastWaveFinished = false;
+
+    private bool bossSpawned = false;
+    private bool bossAlive = false;
 
     private void OnEnable()
     {
@@ -59,13 +67,6 @@ public class WaveTimerSpawner : MonoBehaviour
             if (spawnCoroutine != null)
                 StopCoroutine(spawnCoroutine);
 
-            if (currentWave >= totalWaves)
-            {
-                timerText.text = "All waves completed!";
-                lastWaveFinished = true;
-                yield break;
-            }
-
             float breakTime = timeBetweenWaves;
 
             while (breakTime > 0)
@@ -75,6 +76,8 @@ public class WaveTimerSpawner : MonoBehaviour
                 yield return null;
             }
         }
+        
+        SpawnBoss();
     }
 
     IEnumerator SpawnRoutine()
@@ -92,28 +95,54 @@ public class WaveTimerSpawner : MonoBehaviour
 
         GameObject prefab = mobPrefabs[Random.Range(0, mobPrefabs.Length)];
 
-        Transform spawnPoint = spawnPoints.Length > 0
-            ? spawnPoints[Random.Range(0, spawnPoints.Length)]
-            : transform;
+        Transform spawnPoint = GetRandomSpawnPoint();
 
         Instantiate(prefab, spawnPoint.position, Quaternion.identity);
 
         aliveEnemies++;
     }
 
+    void SpawnBoss()
+    {
+        bossSpawned = true;
+        bossAlive = true;
+
+        Transform spawnPoint = GetRandomSpawnPoint();
+
+        Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
+        
+    }
+
+    Transform GetRandomSpawnPoint()
+    {
+        return spawnPoints.Length > 0
+            ? spawnPoints[Random.Range(0, spawnPoints.Length)]
+            : transform;
+    }
+
     void HandleEnemyKilled(int xp)
     {
-        Debug.Log("Enemy killed, alive: " + aliveEnemies);
-
-        aliveEnemies--;
-
-        if (aliveEnemies <= 0)
-            aliveEnemies = 0;
-
-        if (lastWaveFinished && aliveEnemies == 0)
+        if (!bossSpawned)
         {
-            Debug.Log("LOAD NEXT SCENE");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            aliveEnemies = Mathf.Max(0, aliveEnemies - 1);
+            return;
+        }
+        
+        if (bossSpawned && !bossAlive)
+            return;
+        
+        if (!bossSpawned)
+            return;
+        
+        if (bossSpawned && bossAlive)
+        {
+            bossAlive = false;
+
+            Debug.Log("BOSS KILLED → LOAD NEXT SCENE");
+
+            SceneManager.LoadScene(
+                SceneManager.GetActiveScene().buildIndex + 1
+            );
         }
     }
 

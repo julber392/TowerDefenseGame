@@ -19,19 +19,6 @@ public class TowerPlacement : MonoBehaviour
     {
         grid = new bool[width, height];
     }
-
-    void Update()
-    {
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //     worldPos.z = 0;
-        //
-        //     Vector2Int gridPos = WorldToGrid(worldPos);
-        //
-        //     TryPlaceTower(gridPos.x, gridPos.y);
-        // }
-    }
     
     Vector2Int WorldToGrid(Vector3 worldPos)
     {
