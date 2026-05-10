@@ -1,18 +1,21 @@
 using System;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
     [SerializeField] private DamageDealer damageDealer;
-    [SerializeField] private float _attackDuration = 0.8f;
-    
+    [SerializeField] private float attackCooldown = 0.8f;
+
     public event EventHandler OnSwordAttacked;
-    private PolygonCollider2D _polygonCollider2D;
-    
+
+    private PolygonCollider2D polygonCollider2D;
+
+    private bool isAttacking;
+
     private void Awake()
     {
-        _polygonCollider2D = GetComponent<PolygonCollider2D>();
+        polygonCollider2D = GetComponent<PolygonCollider2D>();
     }
 
     private void Start()
@@ -22,15 +25,23 @@ public class Sword : MonoBehaviour
 
     public void Attack()
     {
-        StartCoroutine(AttackRoutine());
-        OnSwordAttacked?.Invoke(this, EventArgs.Empty);
-    }
-    
-    private IEnumerator AttackRoutine()
-    {
+        if (isAttacking)
+            return;
+
+        isAttacking = true;
+
         AttackColliderOn();
-        yield return new WaitForSeconds(_attackDuration);
-        AttackColliderOff();
+
+        OnSwordAttacked?.Invoke(this, EventArgs.Empty);
+
+        StartCoroutine(AttackCooldownRoutine());
+    }
+
+    private IEnumerator AttackCooldownRoutine()
+    {
+        yield return new WaitForSeconds(attackCooldown);
+
+        isAttacking = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,11 +51,11 @@ public class Sword : MonoBehaviour
 
     private void AttackColliderOn()
     {
-        _polygonCollider2D.enabled = true;
+        polygonCollider2D.enabled = true;
     }
-    
+
     public void AttackColliderOff()
     {
-        _polygonCollider2D.enabled = false;
+        polygonCollider2D.enabled = false;
     }
 }
