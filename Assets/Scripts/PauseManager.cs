@@ -22,7 +22,10 @@ public class PauseManager : MonoBehaviour
             TogglePause("pause");
         }
     }
-
+    public void TogglePauseUI()
+    {
+        TogglePause("pause");
+    }
     public void TogglePause(string reason)
     {
         if (_pauseReasons.Contains(reason))
