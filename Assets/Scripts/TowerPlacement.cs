@@ -1,7 +1,14 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TowerPlacement : MonoBehaviour
 {
+    [SerializeField] private Transform enemySpawn;
+    [Header("Target Block")]
+    [SerializeField] private Transform target;
+    [SerializeField] private float targetBlockRadius = 1f;
+    
     [Header("Grid Settings")]
     public int width = 10;
     public int height = 10;
@@ -102,7 +109,13 @@ public class TowerPlacement : MonoBehaviour
     public bool TryPlaceFromWorld(Vector3 worldPos, TowerData towerData)
     {
         Vector2Int gridPos = WorldToGrid(worldPos);
-
+        
+        if (IsTooCloseToTarget(worldPos))
+        {
+            Debug.Log("Слишком близко к target");
+            return false;
+        }
+        
         if (!CanPlace(gridPos.x, gridPos.y))
             return false;
 
@@ -123,12 +136,66 @@ public class TowerPlacement : MonoBehaviour
         );
 
         GameObject towerGO = Instantiate(towerData.prefab, spawnPos, Quaternion.identity);
-        
+        NavMeshObstacle obstacle = towerGO.GetComponent<NavMeshObstacle>();
+
+        if (obstacle != null)
+        {
+            obstacle.carving = true;
+        }
+
+        StartCoroutine(CheckPathNextFrame(towerGO, gridPos, towerData));
+
+        return true;
+    }
+    private IEnumerator CheckPathNextFrame(
+        GameObject towerGO,
+        Vector2Int gridPos,
+        TowerData towerData
+    )
+    {
+        yield return null;
+
+        if (!HasPath())
+        {
+            Debug.Log("Нельзя полностью блокировать путь!");
+
+            Destroy(towerGO);
+            
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    grid[gridPos.x + i, gridPos.y + j] = false;
+                }
+            }
+
+            yield break;
+        }
+
         BeamAttack attack = towerGO.GetComponent<BeamAttack>();
+
         if (attack != null)
         {
             attack.SetData(towerData);
         }
-        return true;
     }
+    bool IsTooCloseToTarget(Vector3 worldPos)
+    {
+        return Vector3.Distance(worldPos, target.position) < targetBlockRadius;
+    }
+    
+    private bool HasPath()
+    {
+        NavMeshPath path = new NavMeshPath();
+
+        bool pathFound = NavMesh.CalculatePath(
+            enemySpawn.position,
+            target.position,
+            NavMesh.AllAreas,
+            path
+        );
+
+        return pathFound && path.status == NavMeshPathStatus.PathComplete;
+    }
+    
 }

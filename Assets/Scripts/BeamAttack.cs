@@ -16,6 +16,9 @@ public class BeamAttack : MonoBehaviour
     }
     private void Update()
     {
+        if (data == null)
+            return;
+
         timer -= Time.deltaTime;
 
         if (timer <= 0f)

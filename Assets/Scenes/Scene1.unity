@@ -3696,6 +3696,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac1a74c9766743258c53ba41d4d6f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerPlacement
+  enemySpawn: {fileID: 1847145963}
+  target: {fileID: 486288549}
+  targetBlockRadius: 1
   width: 65
   height: 38
   cellSize: 0.5
