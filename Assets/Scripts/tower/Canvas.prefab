@@ -35,10 +35,10 @@ RectTransform:
   m_Children:
   - {fileID: 5712858752421043724}
   - {fileID: 3387817314993825733}
-  - {fileID: 1633548075509763828}
-  - {fileID: 3599598588116405071}
   - {fileID: 1563535505235866839}
   - {fileID: 5691676647161655596}
+  - {fileID: 1633548075509763828}
+  - {fileID: 3599598588116405071}
   - {fileID: 9152022983537337079}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -141,9 +141,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
   _gameOverPanel: {fileID: 7712848298378457716}
+  _canvasGroup: {fileID: 3501208352815360703}
   _menuSceneName: Menu
   _playerHp: {fileID: 0}
   _pauseManager: {fileID: 0}
+  fadeDuration: 1
 --- !u!1 &114750183957432115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,6 +3119,7 @@ GameObject:
   - component: {fileID: 3599598588116405071}
   - component: {fileID: 961114388410340093}
   - component: {fileID: 4534801589757233637}
+  - component: {fileID: 3501208352815360703}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -3183,6 +3186,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &3501208352815360703
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7712848298378457716}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &7820943655605966956
 GameObject:
   m_ObjectHideFlags: 0
