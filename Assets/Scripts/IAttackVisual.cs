@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IAttackVisual
 {
-    void Play(Transform target);
+    void Play(EnemyEntity target);
 }

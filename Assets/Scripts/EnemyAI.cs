@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
         Chase,
         Attack
     }
+    private float baseSpeed;
 
     [Header("Target Point")]
     [SerializeField] private string targetTag = "Target";
@@ -32,6 +33,7 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        baseSpeed = navMeshAgent.speed;
         enemy = GetComponent<EnemyEntity>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
@@ -61,7 +63,7 @@ public class EnemyAI : MonoBehaviour
             StopEverything();
             return;
         }
-
+        navMeshAgent.speed = baseSpeed * enemy.speedMultiplier;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         switch (state)

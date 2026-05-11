@@ -14,14 +14,14 @@ public class LaserVisual : MonoBehaviour, IAttackVisual
             lineRenderer.enabled = false;
     }
 
-    public void Play(Transform target)
+    public void Play(EnemyEntity target)
     {
         if (lineRenderer == null) return;
 
         if (laserCoroutine != null)
             StopCoroutine(laserCoroutine);
 
-        laserCoroutine = StartCoroutine(ShowLaser(target));
+        laserCoroutine = StartCoroutine(ShowLaser(target.transform));
     }
 
     private IEnumerator ShowLaser(Transform target)

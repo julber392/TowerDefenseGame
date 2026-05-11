@@ -3,7 +3,7 @@ using UnityEngine;
 public class BeamAttack : MonoBehaviour
 {
     [Header("Attack")]
-    [SerializeField] private float range = 5f;
+    [SerializeField] public float range = 5f;
     [SerializeField] private TowerData data;
     [SerializeField] private LayerMask enemyLayer;
 
@@ -50,7 +50,7 @@ public class BeamAttack : MonoBehaviour
 
         target.TakeDamage((int)data.damage);
 
-        visual?.Play(target.transform);
+        visual?.Play(target);
     }
 
     public void SetData(TowerData towerData)

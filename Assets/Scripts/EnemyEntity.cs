@@ -1,7 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyEntity : MonoBehaviour, IDamageable
 {
+    public float speedMultiplier = 1f;
+    private Coroutine slowCoroutine;
+    
     [SerializeField] private int _maxHealth = 100;
     [SerializeField] private int _xpReward = 50;
     [SerializeField] private int _damage = 10;
@@ -43,8 +47,25 @@ public class EnemyEntity : MonoBehaviour, IDamageable
             {
                 OnAttack?.Invoke();
                 playerHp.TakeDamage(_damage);
-                Debug.Log("Enemy dealt damage");
             }
         
+    }
+    
+    public void ApplySlow(float multiplier, float duration)
+    {
+        if (slowCoroutine != null)
+            StopCoroutine(slowCoroutine);
+
+        slowCoroutine = StartCoroutine(SlowRoutine(multiplier, duration));
+    }
+
+    private IEnumerator SlowRoutine(float multiplier, float duration)
+    {
+        speedMultiplier = multiplier;
+
+        yield return new WaitForSeconds(duration);
+
+        speedMultiplier = 1f;
+
     }
 }

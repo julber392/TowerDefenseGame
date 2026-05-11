@@ -8,12 +8,12 @@ public class ArrowVisual : MonoBehaviour, IAttackVisual
 
     private Coroutine arrowCoroutine;
 
-    public void Play(Transform target)
+    public void Play(EnemyEntity target)
     {
         if (arrowCoroutine != null)
             StopCoroutine(arrowCoroutine);
 
-        arrowCoroutine = StartCoroutine(ShowArrow(target));
+        arrowCoroutine = StartCoroutine(ShowArrow(target.transform));
     }
 
     private IEnumerator ShowArrow(Transform target)
