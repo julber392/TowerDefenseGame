@@ -211,7 +211,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 1
+  m_Speed: 0.8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -269,7 +269,7 @@ MonoBehaviour:
   attackDuration: 0.8
   attackRange: 0.5
   lastAttackTime: 0
-  attackCooldown: 0.5
+  attackCooldown: 1
 --- !u!114 &6989460707418576443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,8 +282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0279f8a2b5f648d4808950b40a53f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyEntity
-  _maxHealth: 10000
-  _xpReward: 50
+  speedMultiplier: 1
+  _maxHealth: 35
+  _xpReward: 30
   _damage: 10
   _attackRange: 1
   _isDead: 0

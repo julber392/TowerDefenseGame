@@ -141,7 +141,7 @@ public class WaveTimerSpawner : MonoBehaviour
             Debug.Log("BOSS KILLED → LOAD NEXT SCENE");
 
             SceneManager.LoadScene(
-                SceneManager.GetActiveScene().buildIndex + 1
+                (SceneManager.GetActiveScene().buildIndex + 1)%4
             );
         }
     }

@@ -97390,6 +97390,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 663305778526670313, guid: 6a656ea844ae14006bc511c868dfc5ed, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1678601914687903069, guid: 6a656ea844ae14006bc511c868dfc5ed, type: 3}
       propertyPath: m_Camera
       value: 
@@ -97397,6 +97401,14 @@ PrefabInstance:
     - target: {fileID: 1678601914687903069, guid: 6a656ea844ae14006bc511c868dfc5ed, type: 3}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055997132747679778, guid: 6a656ea844ae14006bc511c868dfc5ed, type: 3}
+      propertyPath: _maxHealth
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055997132747679778, guid: 6a656ea844ae14006bc511c868dfc5ed, type: 3}
+      propertyPath: _regenRate
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5468385861951485667, guid: 6a656ea844ae14006bc511c868dfc5ed, type: 3}
       propertyPath: xpBar
@@ -97413,6 +97425,10 @@ PrefabInstance:
     - target: {fileID: 8173356439566415843, guid: 6a656ea844ae14006bc511c868dfc5ed, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940232940521006250, guid: 6a656ea844ae14006bc511c868dfc5ed, type: 3}
+      propertyPath: damage
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8974468493260056469, guid: 6a656ea844ae14006bc511c868dfc5ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -97529,7 +97545,15 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 5003115899037615347, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003115899037615347, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823322557983445979, guid: 64650d9cc842146f7997caf3af22947c, type: 3}
+      propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6689768326040954605, guid: 64650d9cc842146f7997caf3af22947c, type: 3}

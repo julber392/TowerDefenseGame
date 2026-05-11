@@ -282,8 +282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0279f8a2b5f648d4808950b40a53f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyEntity
-  _maxHealth: 20
-  _xpReward: 50
-  _damage: 10
+  speedMultiplier: 1
+  _maxHealth: 1000
+  _xpReward: 200
+  _damage: 45
   _attackRange: 1
   _isDead: 0

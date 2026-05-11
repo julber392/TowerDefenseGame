@@ -15,6 +15,6 @@ MonoBehaviour:
   towerName: LaserTower
   icon: {fileID: 21300000, guid: de0f561bed1db4a81a577124ca68afd8, type: 3}
   prefab: {fileID: 5264915287370844394, guid: e84dac9e10fd74d63be4d816c9b8bb2f, type: 3}
-  damage: 10
+  damage: 15
   attackSpeed: 1
-  count: 982
+  count: 1

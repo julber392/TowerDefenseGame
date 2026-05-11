@@ -34,7 +34,7 @@ public class UpgradeCardUI : MonoBehaviour
                 return tower.towerName + " + урон";
 
             case UpgradeType.AttackSpeed:
-                return tower.towerName + " быстрее";
+                return tower.towerName + " быстрее атакует";
 
             case UpgradeType.AddTower:
                 return "+1 " + tower.towerName;
