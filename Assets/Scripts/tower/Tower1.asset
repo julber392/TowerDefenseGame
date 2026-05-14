@@ -17,4 +17,4 @@ MonoBehaviour:
   prefab: {fileID: 5264915287370844394, guid: e84dac9e10fd74d63be4d816c9b8bb2f, type: 3}
   damage: 15
   attackSpeed: 1
-  count: 1
+  count: 2

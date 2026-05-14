@@ -1,12 +1,15 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using Random = UnityEngine.Random;
 
 public class UpgradeUI : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
     [SerializeField] private UpgradeCardUI cardPrefab;
     [SerializeField] private Transform container;
-
+    public Action OnCountChanged;
     [SerializeField] private TowerManager towerManager;
     [SerializeField] private PauseManager _pauseManager;
 
@@ -58,15 +61,15 @@ public class UpgradeUI : MonoBehaviour
         switch (type)
         {
             case UpgradeType.Damage:
-                tower.damage += 5;
+                towerManager.UpgradeDamage(tower, 5);
                 break;
 
             case UpgradeType.AttackSpeed:
-                tower.attackSpeed *= 0.8f;
+                towerManager.UpgradeAttackSpeed(tower, 0.8f);
                 break;
 
             case UpgradeType.AddTower:
-                tower.count++;
+                towerManager.AddTower(tower);
                 break;
         }
     }

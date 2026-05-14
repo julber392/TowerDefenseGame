@@ -8,7 +8,7 @@ public class TowerDragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [SerializeField] private Image icon;
     [SerializeField] private TowerData towerData;
     private Canvas canvas;
-
+    private TowerManager towerManager;
     private GameObject dragGhost;
     private TowerPlacement placement;
 
@@ -20,7 +20,7 @@ public class TowerDragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private void Start()
     {
         placement = FindObjectOfType<TowerPlacement>();
-        
+        towerManager = FindObjectOfType<TowerManager>();
     }
 
     public void Init(TowerData data)
@@ -66,7 +66,7 @@ public class TowerDragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         if (placed)
         {
-            towerData.count--;
+            towerManager.TryUseTower(towerData);
         }
 
         Destroy(dragGhost);

@@ -5,7 +5,6 @@ public class TowerInventoryUI : MonoBehaviour
     [SerializeField] private Transform container;
     [SerializeField] private TowerDragItem itemPrefab;
     [SerializeField] private TowerManager towerManager;
-    [SerializeField] private Canvas canvas;
 
     private void Start()
     {
@@ -17,8 +16,15 @@ public class TowerInventoryUI : MonoBehaviour
         foreach (var tower in towerManager.GetTowers())
         {
             var item = Instantiate(itemPrefab, container);
+
             item.Init(tower);
-            item.GetComponent<TowerDragItem>().Init(tower);
+
+            var countUI = item.GetComponent<TowerCountUI>();
+
+            if (countUI != null)
+            {
+                countUI.Init(tower, towerManager);
+            }
         }
     }
 }
